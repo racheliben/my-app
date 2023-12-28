@@ -23,8 +23,6 @@ const SUBMIT_POST = "Save";
 const NewPost = (props) => {
   const { userId, handleClose, open, addPost } = props;
 
-  const [isNewPost, setIsNewPost] = useState(false);
-
   const onSavePost = (values) => {
     fetch(`https://jsonplaceholder.typicode.com/posts/${userId}`, {
       method: "PUT",
@@ -49,7 +47,6 @@ const NewPost = (props) => {
     },
     validationSchema: validationSchemaNewPost,
     onSubmit: (values) => {
-      setIsNewPost(true);
       onSavePost(values);
     },
   });
