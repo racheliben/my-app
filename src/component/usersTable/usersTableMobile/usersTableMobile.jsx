@@ -28,6 +28,7 @@ const UsersTableMobile = (props) => {
         <TableBody>
           {dataUsers.map((user) => (
             <UsersRowMobile
+              key={user.id}
               setUserDetails={setUserDetails}
               user={user}
               titleEmail={titleEmail}

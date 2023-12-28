@@ -31,16 +31,6 @@ const UserPostsContent = (props) => {
     setOpen(false);
   };
 
-  // const [dataPostrsCurrent, setDataPostrsCurrent] = useState([]);
-
-  // useEffect(() => {
-  //   fetch(`https://jsonplaceholder.typicode.com/posts?userId=${userDetails.id}`)
-  //     .then((response) => response.json())
-  //     .then((json) => setDataPostrsCurrent(json))
-  //     .catch((err) => alert("Sorry...", err.message))
-  //     // .finally(handlsetDataPostersIsLoading(false));
-  // }, [userDetails]);
-
   const CreatePost = (post) => {
     dataPostsCurrent.unshift(post);
     setOpen(false);
@@ -71,7 +61,6 @@ const UserPostsContent = (props) => {
               </Typography>
               <List
                 sx={{ mb: 2 }}
-                // style={{ overflow: "auto", height: "100vh" }}
               >
                 {dataPostsCurrent?.map(({ id, title, body }) => (
                   <React.Fragment key={id}>

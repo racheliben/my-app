@@ -1,7 +1,7 @@
 import { styled } from "@mui/material/styles";
 import Dialog from "@mui/material/Dialog";
 
-export const BootstrapDialog = styled(Dialog)(({ theme }) => ({
+export const StyledBootstrapDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
     padding: theme.spacing(2),
   },
@@ -10,13 +10,13 @@ export const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   },
 }));
 
-export const DivForm = styled("div")({
+export const StyledForm = styled("div")({
   display: "flex",
   flexDirection: "column",
   minHeight: "300px",
 });
 
-export const DivFlexForm = styled("div")({
+export const StyledFlexForm = styled("div")({
   display: "flex",
   flexDirection: "column",
 });

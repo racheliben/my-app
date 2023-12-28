@@ -5,44 +5,41 @@ import DialogContent from "@mui/material/DialogContent";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import {
-  BootstrapDialog,
-  DivForm,
-  DivFlexForm,
+  StyledBootstrapDialog,
+  StyledForm,
+  StyledFlexForm,
 } from "./NewPost.styled";
-import { useEffect } from "react";
 import { useFormik } from "formik";
 import { validationSchemaNewPost } from "./NewPostValidetion";
 import { useState } from "react";
-import {
-  Input,
-  FormControl,
-  FormHelperText,
-} from "@mui/material";
-import { TextField } from "@mui/material";
+import FormControl from "@mui/material/FormControl";
+import FormHelperText from "@mui/material/FormHelperText";
+import Input from "@mui/material/Input";
+import TextField from "@mui/material/TextField";
+
+const CREATE_POST = "Create Post";
+const SUBMIT_POST = "Save";
 
 const NewPost = (props) => {
-  useEffect(() => {
-    console.log("NewPost");
-    console.log(props);
-  }, []);
+  const { userId, handleClose, open, addPost } = props;
 
   const [isNewPost, setIsNewPost] = useState(false);
 
   const onSavePost = (values) => {
-    fetch(`https://jsonplaceholder.typicode.com/posts/${props.userId}`, {
+    fetch(`https://jsonplaceholder.typicode.com/posts/${userId}`, {
       method: "PUT",
       body: JSON.stringify({
         id: 20,
         title: values.title,
         body: values.body,
-        userId: props.userId,
+        userId: userId,
       }),
       headers: {
         "Content-type": "application/json; charset=UTF-8",
       },
     })
       .then((response) => response.json())
-      .then((json) => props.addPost(json));
+      .then((json) => addPost(json));
   };
 
   const formikSave = useFormik({
@@ -58,19 +55,19 @@ const NewPost = (props) => {
   });
 
   return (
-    <DivForm>
+    <StyledForm>
       <React.Fragment>
-        <BootstrapDialog
-          onClose={() => props.handleClose()}
+        <StyledBootstrapDialog
+          onClose={() => handleClose()}
           aria-labelledby="customized-dialog-title"
-          open={props.open}
+          open={open}
         >
           <DialogTitle sx={{ m: 0, p: 2 }} id="customized-dialog-title">
-            Add Post
+            {CREATE_POST}
           </DialogTitle>
           <IconButton
             aria-label="close"
-            onClick={() => props.handleClose()}
+            onClick={() => handleClose()}
             sx={{
               position: "absolute",
               right: 8,
@@ -81,55 +78,51 @@ const NewPost = (props) => {
             <CloseIcon />
           </IconButton>
           <DialogContent dividers>
-            <>
-              <form onSubmit={formikSave.handleSubmit}>
-                <DivFlexForm>
-                  <FormControl>
-                    <Input
-                      name="title"
-                      value={formikSave.values.title}
-                      onChange={formikSave.handleChange}
-                      error={
-                        formikSave.touched.title &&
-                        Boolean(formikSave.errors.title)
-                      }
-                      placeholder="title"
-                      id="title"
-                      aria-describedby="title-helper-text"
-                    />
-                    <FormHelperText id="title-helper-text">
-                      {formikSave.touched.title && formikSave.errors.title}
-                    </FormHelperText>
-                  </FormControl>
-                  <FormControl style={{ marginTop: "20px" }}>
-                    <TextField
-                      name="body"
-                      multiline
-                      rows={4}
-                      aria-label="maximum height"
-                      placeholder="body"
-                      value={formikSave.values.body}
-                      onChange={formikSave.handleChange}
-                      error={
-                        formikSave.touched.body &&
-                        Boolean(formikSave.errors.body)
-                      }
-                      id="body"
-                      aria-describedby="body-helper-text"
-                    />
-
-                    <FormHelperText id="body-helper-text">
-                      {formikSave.touched.body && formikSave.errors.body}
-                    </FormHelperText>
-                  </FormControl>
-                  <Button type="submit">Save</Button>
-                </DivFlexForm>
-              </form>
-            </>
+            <form onSubmit={formikSave.handleSubmit}>
+              <StyledFlexForm>
+                <FormControl>
+                  <Input
+                    name="title"
+                    value={formikSave.values.title}
+                    onChange={formikSave.handleChange}
+                    error={
+                      formikSave.touched.title &&
+                      Boolean(formikSave.errors.title)
+                    }
+                    placeholder="title"
+                    id="title"
+                    aria-describedby="title-helper-text"
+                  />
+                  <FormHelperText id="title-helper-text">
+                    {formikSave.touched.title && formikSave.errors.title}
+                  </FormHelperText>
+                </FormControl>
+                <FormControl style={{ marginTop: "20px" }}>
+                  <TextField
+                    name="body"
+                    multiline
+                    rows={4}
+                    aria-label="maximum height"
+                    placeholder="body"
+                    value={formikSave.values.body}
+                    onChange={formikSave.handleChange}
+                    error={
+                      formikSave.touched.body && Boolean(formikSave.errors.body)
+                    }
+                    id="body"
+                    aria-describedby="body-helper-text"
+                  />
+                  <FormHelperText id="body-helper-text">
+                    {formikSave.touched.body && formikSave.errors.body}
+                  </FormHelperText>
+                </FormControl>
+                <Button type="submit">{SUBMIT_POST}</Button>
+              </StyledFlexForm>
+            </form>
           </DialogContent>
-        </BootstrapDialog>
+        </StyledBootstrapDialog>
       </React.Fragment>
-    </DivForm>
+    </StyledForm>
   );
 };
 export default NewPost;
