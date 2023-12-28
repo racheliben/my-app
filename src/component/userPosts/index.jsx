@@ -19,7 +19,7 @@ const UserPosts = (props) => {
         setDataPostsCurrent(json);
         setIsPostsLoading(false);
       })
-      .catch((err) => {
+      .catch(() => {
         alert(
           "There is currently a malfunction in the data elaboration, try again later"
         );

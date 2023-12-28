@@ -1,9 +1,10 @@
 import React from "react";
-import { InputBase, Paper } from "@mui/material";
+import InputBase from "@mui/material/InputBase";
+import Paper from "@mui/material/Paper";
 import SearchIcon from "@mui/icons-material/Search";
 import { StyledColorIcon } from "./Search.styled";
 
-const SEARCH="Search name or email";
+const SEARCH = "Search name or email";
 
 const Search = (props) => {
   const { updateWordSearch, wordSearch } = props;

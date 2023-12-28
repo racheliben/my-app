@@ -1,5 +1,9 @@
 import React from "react";
-import { Table, Paper, TableRow, TableHead, TableBody } from "@mui/material";
+import TableBody from "@mui/material/TableBody";
+import Table from "@mui/material/Table";
+import Paper from "@mui/material/Paper";
+import TableRow from "@mui/material/TableRow";
+import TableHead from "@mui/material/TableHead";
 import {
   StyledTableCell,
   StyledTableWapper,

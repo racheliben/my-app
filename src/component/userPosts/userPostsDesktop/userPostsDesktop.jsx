@@ -1,9 +1,9 @@
 import React from "react";
-import { DivWapperUserPosts } from "./userPostsDesktop.styled";
+import { StyledWapperUserPosts } from "./userPostsDesktop.styled";
 
 const UserPostsDesktop = (props) => {
   const { children } = props;
 
-  return <DivWapperUserPosts>{children}</DivWapperUserPosts>;
+  return <StyledWapperUserPosts>{children}</StyledWapperUserPosts>;
 };
 export default UserPostsDesktop;

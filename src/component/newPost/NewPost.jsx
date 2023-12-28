@@ -17,11 +17,10 @@ import FormHelperText from "@mui/material/FormHelperText";
 import Input from "@mui/material/Input";
 import TextField from "@mui/material/TextField";
 
-const CREATE_POST = "Create Post";
 const SUBMIT_POST = "Save";
 
 const NewPost = (props) => {
-  const { userId, handleClose, open, addPost } = props;
+  const { userId, handleClose, open, addPost, createPost } = props;
 
   const onSavePost = (values) => {
     fetch(`https://jsonplaceholder.typicode.com/posts/${userId}`, {
@@ -60,7 +59,7 @@ const NewPost = (props) => {
           open={open}
         >
           <DialogTitle sx={{ m: 0, p: 2 }} id="customized-dialog-title">
-            {CREATE_POST}
+            {createPost}
           </DialogTitle>
           <IconButton
             aria-label="close"

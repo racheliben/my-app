@@ -1,9 +1,7 @@
-import {
-  TableCell,
-  TableRow,
-  tableCellClasses,
-  TableContainer,
-} from "@mui/material";
+import TableRow from "@mui/material/TableRow";
+import TableCell from "@mui/material/TableCell";
+import { tableCellClasses } from "@mui/material";
+import TableContainer from "@mui/material/TableContainer";
 import { styled } from "@mui/material/styles";
 
 export const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -17,7 +15,6 @@ export const StyledTableCell = styled(TableCell)(({ theme }) => ({
 }));
 
 export const StyledTableRow = styled(TableRow)(({ iscurrent }) => ({
-  // hide last border
   "&:last-child td, &:last-child th": {
     border: 0,
   },
